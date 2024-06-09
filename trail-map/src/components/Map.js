@@ -3,7 +3,7 @@ import mapboxgl from 'mapbox-gl';
 import { length, along, lineString } from '@turf/turf';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-const mapboxAccessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
 const MapComponent = ({ trail }) => {
   const mapContainerRef = useRef(null);
@@ -19,7 +19,6 @@ const MapComponent = ({ trail }) => {
       antialias: true,
       interactive: false,
       hash: false,
-      accessToken: mapboxAccessToken,
     });
 
     const uniqueData = Array.from(new Set(trail.data.map(JSON.stringify))).map(JSON.parse);
