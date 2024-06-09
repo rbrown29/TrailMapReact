@@ -9,6 +9,7 @@ const MapComponent = ({ trail }) => {
   const mapContainerRef = useRef(null);
 
   useEffect(() => {
+    const isMobile = window.innerWidth < 768;
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: 'mapbox://styles/mapbox/satellite-v9',
@@ -107,7 +108,7 @@ const MapComponent = ({ trail }) => {
 
       await map.once('idle');
 
-      const animationDuration = 25000;
+      const animationDuration = isMobile ? 40000 : 25000;
       const path = lineString(coordinates);
       const pathDistance = length(path);
 
