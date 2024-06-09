@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
-import { length, along, lineString } from '@turf/turf';
+import { length, along, lineString, bbox } from '@turf/turf';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
@@ -14,7 +14,7 @@ const MapComponent = ({ trail }) => {
       container: mapContainerRef.current,
       style: 'mapbox://styles/mapbox/satellite-v9',
       center: [trail.data[0].lon, trail.data[0].lat],
-      zoom: isMobile ? 20 : 15,
+      zoom: 15,
       pitch: isMobile ? 30 : 76, 
       bearing: isMobile ? 90 : 150, 
       antialias: true,
@@ -69,6 +69,14 @@ const MapComponent = ({ trail }) => {
         new mapboxgl.Marker({ color: 'green' })
           .setLngLat(startCoords)
           .addTo(map);
+          if (isMobile) {
+          const trailBbox = bbox(geojson);
+          map.fitBounds(trailBbox, {
+            padding: { top: 20, bottom: 20, left: 20, right: 20 },
+            maxZoom: 15,
+            duration: 2000
+          });
+        }
       } else {
         console.error('No coordinates available to add markers.');
       }
@@ -136,7 +144,7 @@ const MapComponent = ({ trail }) => {
           'rgba(255, 0, 0, 0)',
         ]);
 
-        const rotation = 150 - animationPhase * 40.0;
+        const rotation = isMobile ? 90 - animationPhase * 10.0 : 150 - animationPhase * 40.0;
         map.setBearing(rotation % 360);
 
         window.requestAnimationFrame(frame);
