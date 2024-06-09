@@ -1,0 +1,15 @@
+body {
+  font-family: 'Syne Mono', monospace;
+}
+
+#trail-name {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  color: #08ff08;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  font-family: 'Syne Mono', monospace;
+}
