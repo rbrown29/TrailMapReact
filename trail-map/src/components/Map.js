@@ -150,7 +150,7 @@ const MapComponent = ({ trail }) => {
   return (
     <>
       <div id="trail-name">{trail.name}</div>
-      <div ref={mapContainerRef} style={{ width: '100%', height: '100vh' }} />
+      <div ref={mapContainerRef} id="map-container" />
     </>
   );
 };

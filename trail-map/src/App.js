@@ -1,6 +1,6 @@
 import React from 'react';
 import MapComponent from './components/Map';
-import css from './App.css';
+import './App.css';
 
 const sampleTrailData = {
   name: "Angels Rest",
