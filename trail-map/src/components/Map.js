@@ -116,7 +116,7 @@ const MapComponent = ({ trail }) => {
 
       await map.once('idle');
 
-      const animationDuration = isMobile ? 80000 : 25000;
+      const animationDuration = isMobile ? 80000 : 30000;
       const path = lineString(coordinates);
       const pathDistance = length(path);
 
