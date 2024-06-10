@@ -14,7 +14,7 @@ const MapComponent = ({ trail }) => {
       container: mapContainerRef.current,
       style: 'mapbox://styles/mapbox/satellite-v9',
       center: [trail.data[0].lon, trail.data[0].lat],
-      zoom: 12,
+      zoom: 14,
       pitch: isMobile ? 30 : 20, 
       bearing: isMobile ? 90 : 150, 
       antialias: true,
@@ -116,7 +116,7 @@ const MapComponent = ({ trail }) => {
 
       await map.once('idle');
 
-      const animationDuration = isMobile ? 80000 : 30000;
+      const animationDuration = isMobile ? 80000 : 40000;
       const path = lineString(coordinates);
       const pathDistance = length(path);
 
