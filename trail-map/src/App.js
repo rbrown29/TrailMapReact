@@ -3,7 +3,7 @@ import MapComponent from './components/Map';
 import './App.css';
 
 const sampleTrailData = {
-  name: "Angels Rest",
+  name: "Smith Rock",
   data: [
     { lon: -121.13702, lat: 44.36613, ele: 864 },
         { lon: -121.13708, lat: 44.36621, ele: 863 },
