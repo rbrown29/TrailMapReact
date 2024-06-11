@@ -14,9 +14,9 @@ const MapComponent = ({ trail }) => {
       container: mapContainerRef.current,
       style: 'mapbox://styles/mapbox/satellite-v9',
       center: [trail.data[0].lon, trail.data[0].lat],
-      zoom: 14,
-      pitch: isMobile ? 30 : 60,  
-      bearing: isMobile ? 90 : 300, 
+      zoom: 15.8,
+      pitch: isMobile ? 30 : 70,  
+      bearing: isMobile ? 90 : 150, 
       antialias: true,
       interactive: false,
       hash: false,
@@ -73,7 +73,7 @@ const MapComponent = ({ trail }) => {
           const trailBbox = bbox(geojson);
           map.fitBounds(trailBbox, {
             padding: { top: 20, bottom: 20, left: 20, right: 20 },
-            maxZoom: 15,
+            maxZoom: 14,
             duration: 2000
           });
         }
