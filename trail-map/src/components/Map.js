@@ -15,7 +15,7 @@ const MapComponent = ({ trail }) => {
       style: 'mapbox://styles/mapbox/satellite-v9',
       center: [trail.data[0].lon, trail.data[0].lat],
       zoom: 14,
-      pitch: isMobile ? 30 : 40,  
+      pitch: isMobile ? 20 : 40,  
       bearing: isMobile ? 90 : 150, 
       antialias: true,
       interactive: false,
