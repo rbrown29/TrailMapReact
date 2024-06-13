@@ -14,7 +14,7 @@ const MapComponent = ({ trail }) => {
       container: mapContainerRef.current,
       style: 'mapbox://styles/mapbox/satellite-v9',
       center: [trail.data[0].lon, trail.data[0].lat],
-      zoom: 12,
+      zoom: 14,
       pitch: isMobile ? 30 : 40,  
       bearing: isMobile ? 90 : 150, 
       antialias: true,
