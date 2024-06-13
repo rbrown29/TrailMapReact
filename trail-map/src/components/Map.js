@@ -16,7 +16,7 @@ const MapComponent = ({ trail }) => {
       center: [trail.data[0].lon, trail.data[0].lat],
       zoom: 12,
       pitch: isMobile ? 30 : 40,  
-      bearing: isMobile ? 50 : 150, 
+      bearing: isMobile ? 90 : 150, 
       antialias: true,
       interactive: false,
       hash: false,
