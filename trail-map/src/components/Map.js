@@ -73,7 +73,7 @@ const MapComponent = ({ trail }) => {
           const trailBbox = bbox(geojson);
           map.fitBounds(trailBbox, {
             padding: { top: 20, bottom: 20, left: 20, right: 20 },
-            maxZoom: 14,
+            maxZoom: 12,
             duration: 2000
           });
         }
