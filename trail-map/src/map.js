@@ -6,23 +6,6 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 // Set the access token on the mapboxgl object
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
-// Function to compute the camera position
-const computeCameraPosition = (pitch, bearing, targetPosition, altitude) => {
-  const bearingInRadian = bearing / 57.29;
-  const pitchInRadian = (90 - pitch) / 57.29;
-  
-  const lngDiff = ((altitude / Math.tan(pitchInRadian)) * Math.sin(-bearingInRadian)) / 70000; // ~70km/degree longitude
-  const latDiff = ((altitude / Math.tan(pitchInRadian)) * Math.cos(-bearingInRadian)) / 110000; // 110km/degree latitude
-  
-  const correctedLng = targetPosition.lng + lngDiff;
-  const correctedLat = targetPosition.lat - latDiff;
-  
-  return {
-    lng: correctedLng,
-    lat: correctedLat
-  };
-};
-
 const MapComponent = ({ trail }) => {
   const mapContainerRef = useRef(null);
 
@@ -31,7 +14,7 @@ const MapComponent = ({ trail }) => {
 
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: 'mapbox://styles/mapbox/satellite-streets-v12?optimize=true',
+      style: 'mapbox://styles/mapbox/satellite-v9?optimize=true',
       center: [trail.data[0].lon, trail.data[0].lat],
       zoom: 11,
       pitch: isMobile ? 30 : 100,
@@ -79,7 +62,7 @@ const MapComponent = ({ trail }) => {
           'line-cap': 'round',
         },
         paint: {
-          'line-color': '#888',
+          'line-color': '#08ff08',
           'line-width': 8,
         },
       });
@@ -94,17 +77,16 @@ const MapComponent = ({ trail }) => {
 
     map.on('load', () => {
       const animationDuration = 80000;
-      const cameraAltitude = 2000;
-      const pitch = 30;
-      const startBearing = -180.0;
-      
+      const cameraAltitude = 3000;
+
       const routeDistance = length(lineString(targetRoute));
+      const cameraRouteDistance = length(lineString(cameraRoute));
 
       let start;
 
       const popup = new mapboxgl.Popup({ closeButton: false });
       const marker = new mapboxgl.Marker({
-        color: '#1E2952',
+        color: 'red',
         scale: 0.8,
         draggable: false,
         pitchAlignment: 'auto',
@@ -114,33 +96,6 @@ const MapComponent = ({ trail }) => {
         .setPopup(popup)
         .addTo(map)
         .togglePopup();
-
-        map.addSource('line', {
-          type: 'geojson',
-          lineMetrics: true,
-          data: {
-            type: 'Feature',
-            properties: {},
-            geometry: {
-              type: 'LineString',
-              coordinates: targetRoute,
-            },
-          },
-        });
-  
-        map.addLayer({
-          type: 'line',
-          source: 'line',
-          id: 'line',
-          paint: {
-            'line-color': 'rgba(0,0,0,0)',
-            'line-width': 5,
-          },
-          layout: {
-            'line-cap': 'round',
-            'line-join': 'round',
-          },
-        });
 
       function frame(time) {
         if (!start) start = time;
@@ -153,34 +108,30 @@ const MapComponent = ({ trail }) => {
           return;
         }
         
+
         const alongRoute = along(lineString(targetRoute), routeDistance * phase).geometry.coordinates;
-        const targetPosition = { lng: alongRoute[0], lat: alongRoute[1] };
-        
-        const bearing = startBearing - phase * 200.0;
-        const cameraPosition = computeCameraPosition(pitch, bearing, targetPosition, cameraAltitude);
+        const alongCamera = along(lineString(cameraRoute), cameraRouteDistance * phase).geometry.coordinates;
 
         const camera = map.getFreeCameraOptions();
 
         camera.position = mapboxgl.MercatorCoordinate.fromLngLat(
-          cameraPosition,
+          {
+            lng: alongCamera[0],
+            lat: alongCamera[1],
+          },
           cameraAltitude
         );
 
-        camera.lookAtPoint(targetPosition);
+        camera.lookAtPoint({
+          lng: alongRoute[0],
+          lat: alongRoute[1],
+        });
 
         map.setFreeCameraOptions(camera);
 
-        const elevation = Math.floor(map.queryTerrainElevation(targetPosition, { exaggerated: false }));
+        const elevation = Math.floor(map.queryTerrainElevation({ lng: alongRoute[0], lat: alongRoute[1] }, { exaggerated: false }));
         popup.setHTML('Altitude: ' + elevation + 'm<br/>');
-        marker.setLngLat(targetPosition);
-
-        map.setPaintProperty('line', 'line-gradient', [
-          'step',
-          ['line-progress'],
-          '#426DFB',  // green #08ff08, yellow #F2FF40, red rgb(255,15,0), neon Green/Yellow rgb(180,255,0)
-          phase,
-          'rgba(255, 0, 0, 0)',
-        ]);
+        marker.setLngLat({ lng: alongRoute[0], lat: alongRoute[1] });
 
         window.requestAnimationFrame(frame);
       }
@@ -194,13 +145,9 @@ const MapComponent = ({ trail }) => {
   return (
     <>
       <div id="trail-name">{trail.name}</div>
-      <div id="trail-length">{trail.length} Miles</div>
-      <div id="trail-difficulty">Difficulty: {trail.Difficulty}</div>
       <div ref={mapContainerRef} id="map-container" />
     </>
   );
 };
 
 export default MapComponent;
-
-
