@@ -94,9 +94,9 @@ const MapComponent = ({ trail }) => {
 
     map.on('load', () => {
       const animationDuration = 80000;
-      const cameraAltitude = 2000;
-      const pitch = 30;
-      const startBearing = -180.0;
+      const cameraAltitude = 3000; // Smith Rock 3000
+      const pitch = 10; // Smith Rock 10
+      const startBearing = 0; // Smith Rock 0
       
       const routeDistance = length(lineString(targetRoute));
 
