@@ -69,6 +69,20 @@ body {
     padding: 3px 6px;
     font-size: 14px;
   }
+  #trail-length {
+    top: 5px;
+    right: 5px;
+    padding: 3px 6px;
+    font-size: 14px;
+  }
+  #trail-difficulty {
+    bottom: 5px;
+    padding: 3px 6px;
+    font-size: 14px;
+  }
+  .mapboxgl-popup-content {
+    max-width: 150px;
+  }
 
   #map-container {
     height: 100vh;
@@ -81,6 +95,20 @@ body {
     left: 5px;
     padding: 2px 4px;
     font-size: 12px;
+  }
+  #trail-length {
+    top: 5px;
+    right: 5px;
+    padding: 2px 4px;
+    font-size: 12px;
+  }
+  #trail-difficulty {
+    bottom: 5px;
+    padding: 2px 4px;
+    font-size: 12px;
+  }
+  .mapboxgl-popup-content {
+    max-width: 100px;
   }
 
   #map-container {

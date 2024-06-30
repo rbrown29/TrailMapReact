@@ -94,9 +94,9 @@ const MapComponent = ({ trail }) => {
 
     map.on('load', () => {
       const animationDuration = 80000;
-      const cameraAltitude = 3000; // Smith Rock 3000
-      const pitch = 10; // Smith Rock 10
-      const startBearing = 0; // Smith Rock 0
+      const cameraAltitude = 3000; // Smith Rock 3000, Adams Glacier 3500, Angel's Rest 2000, eagle creek 3000
+      const pitch = 30; // Smith Rock 10, Adams Glacier 20, Angel's Rest 30, eagle creek 30
+      const startBearing = 0; // Smith Rock 0, Adams Glacier 0, Angel's Rest 0, eagle creek 0
       
       const routeDistance = length(lineString(targetRoute));
 
@@ -177,7 +177,7 @@ const MapComponent = ({ trail }) => {
         map.setPaintProperty('line', 'line-gradient', [
           'step',
           ['line-progress'],
-          '#426DFB',  // green #08ff08, yellow #F2FF40, red rgb(255,15,0), neon Green/Yellow rgb(180,255,0)
+          'rgb(180,255,0)',  // green #08ff08, yellow #F2FF40, red rgb(255,15,0), neon Green/Yellow rgb(180,255,0), blue #004B93
           phase,
           'rgba(255, 0, 0, 0)',
         ]);
