@@ -94,9 +94,9 @@ const MapComponent = ({ trail }) => {
 
     map.on('load', () => {
       const animationDuration = 80000;
-      const cameraAltitude = 3000; // Smith Rock 3000, Adams Glacier 3500, Angel's Rest 2000, eagle creek 3000
-      const pitch = 30; // Smith Rock 10, Adams Glacier 20, Angel's Rest 30, eagle creek 30
-      const startBearing = 0; // Smith Rock 0, Adams Glacier 0, Angel's Rest 0, eagle creek 0
+      const cameraAltitude = 3500; // Smith Rock 3000, Adams Glacier 3500, Angel's Rest 2000, eagle creek 3000, Multnomah-Wahkeena Loop 3000, cape perpetua 500, battleAxeLoop 4500, belknapCrater 4500
+      const pitch = 20; // Smith Rock 10, Adams Glacier 20, Angel's Rest 30, eagle creek 20, Multnomah-Wahkeena Loop 20, cape perpetua 60, battleAxeLoop 20, belknapCrater 20
+      const startBearing = 0; // Smith Rock 0, Adams Glacier 0, Angel's Rest 0, eagle creek 0, Multnomah-Wahkeena Loop 0, cape perpetua -120, battleAxeLoop 0, belknapCrater 0
       
       const routeDistance = length(lineString(targetRoute));
 
@@ -123,7 +123,7 @@ const MapComponent = ({ trail }) => {
             properties: {},
             geometry: {
               type: 'LineString',
-              coordinates: targetRoute,
+              coordinates: cameraRoute,
             },
           },
         });
