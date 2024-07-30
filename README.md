@@ -62,6 +62,8 @@
 
 - Distance Calculation: The distance is calculated using the Haversine formula, which takes into account the curvature of the Earth.
 
+[Haversine formula](https://en.wikipedia.org/wiki/Haversine_formula)
+
 ### Built With Mapbox
 
 ##### 3D Terrain Elevation Map was derived from the following articles and added custom code.
