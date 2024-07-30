@@ -35,7 +35,7 @@
 
    ```bash
     REACT_APP_MAPBOX_ACCESS_TOKEN=your-access-token
-    ```
+   ```
 
 4. Start the development server:
 
@@ -47,7 +47,6 @@
 
 5. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-
 ### How it Works
 
 - Map Initialization: The map is initialized with Mapbox's satellite streets style, centered on the starting point of the trail.
@@ -55,6 +54,14 @@
 - Animation: The camera moves along the trail, showing the current position's altitude and the distance covered so far.
 
 - Distance Calculation: The distance is calculated using the Haversine formula, which takes into account the curvature of the Earth.
+
+### Built With Mapbox
+
+##### 3D Terrain Elevation Map was derived from the following articles and added custom code.
+
+- [Query terrain elevation](https://docs.mapbox.com/mapbox-gl-js/example/query-terrain-elevation/)
+
+- [Building Cinematic Route Animations with MapboxGL](https://www.mapbox.com/blog/building-cinematic-route-animations-with-mapboxgl)
 
 ### Preview
 
