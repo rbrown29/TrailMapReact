@@ -117,9 +117,9 @@ const MapComponent = ({ trail }) => {
     // Smith Rock 0, Adams Glacier 0, Angel's Rest 0, eagle creek 0, Multnomah-Wahkeena Loop 0, cape perpetua -120, battleAxeLoop 0, belknapCrater 0, Ice Lake 0, cached lake 0, Garfield Peak 0, cape falcon 0, cape kiwanda 0, cascadeHead 0, mirror lake 0, opal creek 0, tamolitch 0
     
     map.on('load', () => {
-      const animationDuration = 100000;
-      const cameraAltitude = 3000;
-      const pitch = 10;
+      const animationDuration = 80000;
+      const cameraAltitude = 4500;
+      const pitch = 20;
       const startBearing = 0;
 
       const routeDistance = length(lineString(targetRoute));
@@ -204,7 +204,7 @@ const MapComponent = ({ trail }) => {
           previousPoint = { lat: targetPosition.lat, lon: targetPosition.lng };
         }
 
-        popup.setHTML(`Altitude: ${elevation}m<br/>Distance: ${currentDistance.toFixed(2)} miles`);
+        popup.setHTML(`Altitude: ${elevation}m`);
         marker.setLngLat(targetPosition);
 
         distanceRef.current.textContent = `${currentDistance.toFixed(2)} Miles`;
@@ -229,8 +229,8 @@ const MapComponent = ({ trail }) => {
   return (
     <>
       <div id="trail-name">{trail.name}</div>
-      <div id="trail-length" ref={distanceRef}>0.00 Miles</div>
-      <div id="trail-difficulty">Difficulty: {trail.Difficulty}</div>
+      <div id="trail-difficulty" ref={distanceRef}>0.00 Miles</div>
+      <div id="trail-length">Difficulty: {trail.Difficulty}</div>
       <div ref={mapContainerRef} id="map-container" />
     </>
   );
