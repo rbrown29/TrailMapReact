@@ -55,3 +55,7 @@
 - Animation: The camera moves along the trail, showing the current position's altitude and the distance covered so far.
 
 - Distance Calculation: The distance is calculated using the Haversine formula, which takes into account the curvature of the Earth.
+
+### Preview
+
+[Trail Map Preview](https://singular-kashata-51dbc7.netlify.app/)
