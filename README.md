@@ -2,6 +2,13 @@
 
 ##### This project visualizes the hiking using Mapbox GL JS. It includes features like real-time distance and elevation updates as the camera moves along the hiking trail.
 
+### Technologies
+ - React
+ - Mapbox GL JS
+ - Node.js
+ - JavaScript
+ - HTML/CSS
+
 ### Features
 
 - Real-time Distance Tracking: As the camera moves along the trail, the distance covered is calculated and displayed.
