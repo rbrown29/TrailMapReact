@@ -1,6 +1,6 @@
 ## Trail Map
 
-##### This project visualizes the hiking using Mapbox GL JS. It includes features like real-time distance and elevation updates as the camera moves along the hiking trail.
+##### This project visualizes hiking trails using Mapbox GL JS. It includes features like real-time distance and elevation updates as the camera moves along the hiking trail.
 
 ### Technologies
  - React
