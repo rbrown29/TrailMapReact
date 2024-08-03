@@ -118,8 +118,8 @@ const MapComponent = ({ trail }) => {
     
     map.on('load', () => {
       const animationDuration = 80000;
-      const cameraAltitude = 4500;
-      const pitch = 20;
+      const cameraAltitude = 3000;
+      const pitch = 10;
       const startBearing = 0;
 
       const routeDistance = length(lineString(targetRoute));
