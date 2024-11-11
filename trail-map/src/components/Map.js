@@ -207,7 +207,7 @@ const MapComponent = ({ trail }) => {
         marker.setLngLat(targetPosition);
 
         //distanceRef.current.textContent = `${currentDistance.toFixed(2)} Miles`;
-        popup.setHTML(`Altitude: ${elevation} meters <br /> Distance: ${currentDistance.toFixed(2)} miles`);
+        popup.setHTML(`${trail.name} <br /> Altitude: ${elevation} meters <br /> Distance: ${currentDistance.toFixed(2)} miles`);
         map.setPaintProperty('line', 'line-gradient', [
           'step',
           ['line-progress'],
