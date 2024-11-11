@@ -62,6 +62,7 @@ body {
   height: 100vh;
 }
 
+
 @media (max-width: 768px) {
   #trail-name {
     top: 5px;

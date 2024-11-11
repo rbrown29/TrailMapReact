@@ -2,6 +2,11 @@
 
 ##### This project visualizes hiking trails using Mapbox GL JS. It includes features like real-time distance and elevation updates as the camera moves along the hiking trail.
 
+This is add on Map for my Oregon Hikes Project.
+### Links To Oregon Hikes project and live Site.
+- https://oregon-hikes.onrender.com/
+- https://github.com/rbrown29/Oregon-Hikes
+
 ### Technologies
  - React
  - Mapbox GL JS

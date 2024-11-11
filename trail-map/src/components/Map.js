@@ -46,7 +46,6 @@ const haversineDistance = (coords1, coords2) => {
 
 const MapComponent = ({ trail }) => {
   const mapContainerRef = useRef(null);
-  const distanceRef = useRef(null); // Reference for the distance display
 
   useEffect(() => {
     const isMobile = window.innerWidth <= 768;
@@ -204,11 +203,11 @@ const MapComponent = ({ trail }) => {
           previousPoint = { lat: targetPosition.lat, lon: targetPosition.lng };
         }
 
-        popup.setHTML(`Altitude: ${elevation}m`);
+       
         marker.setLngLat(targetPosition);
 
-        distanceRef.current.textContent = `${currentDistance.toFixed(2)} Miles`;
-
+        //distanceRef.current.textContent = `${currentDistance.toFixed(2)} Miles`;
+        popup.setHTML(`Altitude: ${elevation} meters <br /> Distance: ${currentDistance.toFixed(2)} miles`);
         map.setPaintProperty('line', 'line-gradient', [
           'step',
           ['line-progress'],
@@ -228,9 +227,11 @@ const MapComponent = ({ trail }) => {
 
   return (
     <>
+      {/*}
       <div id="trail-name">{trail.name}</div>
       <div id="trail-difficulty" ref={distanceRef}>0.00 Miles</div>
       <div id="trail-length">Difficulty: {trail.Difficulty}</div>
+      */}
       <div ref={mapContainerRef} id="map-container" />
     </>
   );
