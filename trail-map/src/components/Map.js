@@ -117,7 +117,7 @@ const MapComponent = ({ trail }) => {
     
     map.on('load', () => {
       const animationDuration = 80000;
-      const cameraAltitude = 400;
+      const cameraAltitude = 2000;
       const pitch = 40;
       const startBearing = 0;
 
@@ -207,7 +207,7 @@ const MapComponent = ({ trail }) => {
         marker.setLngLat(targetPosition);
 
         //distanceRef.current.textContent = `${currentDistance.toFixed(2)} Miles`;
-        popup.setHTML(`${trail.name} <br /> Altitude: ${elevation} meters <br /> Distance: ${currentDistance.toFixed(2)} miles`);
+        popup.setHTML(`${trail.name} <br />${elevation} meters <br />${currentDistance.toFixed(2)} miles`);
         map.setPaintProperty('line', 'line-gradient', [
           'step',
           ['line-progress'],
