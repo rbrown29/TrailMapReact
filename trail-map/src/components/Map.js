@@ -116,9 +116,9 @@ const MapComponent = ({ trail }) => {
     // Smith Rock 0, Adams Glacier 0, Angel's Rest 0, eagle creek 0, Multnomah-Wahkeena Loop 0, cape perpetua -120, battleAxeLoop 0, belknapCrater 0, Ice Lake 0, cached lake 0, Garfield Peak 0, cape falcon 0, cape kiwanda 0, cascadeHead 0, mirror lake 0, opal creek 0, tamolitch 0
     
     map.on('load', () => {
-      const animationDuration = 80000;
-      const cameraAltitude = 1000;
-      const pitch = 50;
+      const animationDuration = 90000;
+      const cameraAltitude = 5000;
+      const pitch = 20;
       const startBearing = 90;
 
       const routeDistance = length(lineString(targetRoute));
